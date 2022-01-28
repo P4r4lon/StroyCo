@@ -1,0 +1,17 @@
+{% extends 'base/layout.html' %} {% block content %}
+<header class="header">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="description text-center" id="deletepage">
+            <h3> Удаление объекта </h3>
+
+            <form method="POST" class="client-form">{% csrf_token %} {{ form.as_p }}
+                <button type="submit "class="btn btn-outline-secondary">Подтвердить удаление</button>
+
+            </form>
+
+        </div>
+    </div>
+
+</header>
+{% endblock %}

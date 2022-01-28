@@ -1,0 +1,29 @@
+{% extends 'base/layout.html' %} {% block content %}
+<header class="header">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="description text-center" id="infopage">
+
+
+            <h3>
+                Страница с информацией о сделках</h3>
+            <a href="{% url 'deals_create' %}"><button class="btn btn-outline-secondary">Добавить</button></a> {% for d in deals %}
+            <div class="card" id="mycard">
+                <a href="{% url 'deals_detail' d.id %}"><h4>Номер договора: {{d.contract}}</h4></a>
+                <p>Квартира: {{d.apartment}}</p>
+                <p>Менеджер: {{d.employer.name}}</p>
+                <p>Цена: {{d.price}}₽</p>
+                <p>Контрагент: {{d.counteragent}}</p>
+                <p>Счёт: {{d.invoice}}</p>
+                <p>Статус акта приёма-передачи: {{d.status_of_act}}</p>
+                <p>Дата заключения: {{d.dateOfCon}}</p>
+                <p>Дата регистрации: {{d.dateOfReg}}</p>
+            </div>
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</header>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base/layout.html' %} {% block content %}
+<header class="header">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="description text-center" id="infopage">
+            <h3>
+                Страница с информацией о квартирах</h3>
+		    <form method="get" action="{% url 'apartments' filter='-price' %}">
+	    	    <input type="text" class="form-control" placeholder="Поиск" name="search">
+		    </form>
+            <a href="{% url 'apartments' filter='price' %}"><button class="btn btn-outline-secondary" id="apartpage">цена<i class="fas fa-arrow-alt-circle-up"></i></button></a>
+            <a href="{% url 'apartments' filter='-price' %}"><button class="btn btn-outline-secondary" id="apartpage">цена<i class="fas fa-arrow-alt-circle-down"></i></button></a>
+            <a href="{% url 'apartments' filter='square' %}"><button class="btn btn-outline-secondary" id="apartpage">площадь<i class="fas fa-arrow-alt-circle-up"></i></button></a>
+            <a href="{% url 'apartments' filter='-square' %}"><button class="btn btn-outline-secondary" id="apartpage">площадь<i class="fas fa-arrow-alt-circle-down"></i></button></a>
+            {%if request.user.is_authenticated and request.user.is_staff %}
+            <a href="{% url 'apartments_create'  %}"><button class="btn btn-outline-secondary" id="apartpage">Добавить</button></a> {% endif %}{% for d in apartments %}
+
+            <div class="card" id="mycard">
+                <a href="{% url 'apartments_detail' d.id %}"><h4>Адрес: {{d.address}} {{d.number}}</h4></a>
+                <p>этаж: {{d.floor}}</p>
+                <p>площадь: {{d.square}}</p>
+                <p>цена: {{d.price}}₽</p>
+                <p>продана: {{d.status}}</p>
+            </div>
+            {% endfor %}
+                        <h3>Средняя стоимость квартир:
+               {{avg}}₽</h3>
+        </div>
+    </div>
+
+</header>
+{% endblock %}

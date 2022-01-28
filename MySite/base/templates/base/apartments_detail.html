@@ -1,0 +1,24 @@
+{% extends 'base/layout.html' %} {% block content %}
+<header class="header">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="description text-center" id="infopage">
+            <h3 class="shadowtext">
+                Страница с информацией о квартирах</h3>
+            <div class="card" id="mycard">
+                <h4>Адрес: {{d.address}} {{d.number}}</h4>
+                <p>этаж: {{d.floor}}</p>
+                <p>площадь: {{d.square}}</p>
+                <p>цена: {{d.price}}₽</p>
+                <p>продана: {{d.status}}</p>
+                {%if request.user.is_authenticated and request.user.is_staff %}
+                <a href="{% url 'apartments_update' d.id %}"><button class="btn btn-outline-secondary" id="incardbutton">Обновить</button></a>
+                <a href="{% url 'apartments_delete' d.id %}"><button class="btn btn-outline-secondary" id="incardbutton">Удалить</button></a>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+
+</header>
+{% endblock %}

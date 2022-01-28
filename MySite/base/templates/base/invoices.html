@@ -1,0 +1,21 @@
+{% extends 'base/layout.html' %} {% block content %}
+<header class="header">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="description text-center" id="infopage">
+            <h3>
+                Страница с информацией о счетах</h3>
+            <a href="{% url 'invoices_create' %}"><button class="btn btn-outline-secondary">Добавить</button></a> {% for d in invoices %}
+            <div class="card" id="mycard">
+                 <a href="{% url 'invoices_detail' d.id %}"><h4>Номер: {{d.number}}</h4></a>
+                <p>Сумма к оплате: {{d.sum}}₽</p>
+                <p>Дата оплаты: {{d.dateOfPayment}}</p>
+                <p>Дата выставления счёта: {{d.dateOfIssue}}</p>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+</header>
+{% endblock %}

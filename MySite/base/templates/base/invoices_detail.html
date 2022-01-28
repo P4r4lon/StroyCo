@@ -1,0 +1,24 @@
+{% extends 'base/layout.html' %} {% block content %}
+<header class="header">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="description text-center" id="infopage">
+            <h3 class="shadowtext">
+                Страница с информацией о счетах</h3>
+
+            <div class="card" id="mycard">
+                <h4>Номер: {{d.number}}</h4>
+                <p>Сумма к оплате: {{d.sum}}₽</p>
+                <p>Дата оплаты: {{d.dateOfPayment}}</p>
+                <p>Дата выставления счёта: {{d.dateOfIssue}}</p>
+                {%if request.user.is_authenticated and request.user.is_staff %}
+                <a href="{% url 'invoices_update' d.id %}"><button class="btn btn-outline-secondary" id="incardbutton">Обновить</button></a>
+                <a href="{% url 'invoices_delete' d.id %}"><button class="btn btn-outline-secondary" id="incardbutton">Удалить</button></a>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+
+</header>
+{% endblock %}

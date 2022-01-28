@@ -1,0 +1,24 @@
+{% extends 'base/layout.html' %} {% block content %}
+<header class="header">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="description text-center" id="infopage">
+                    <h3 id="shadowtext">  Страница с информацией о персонале</h3>
+            <div class="card" id="mycard">
+                <a href="{% url 'employers_detail' d.id %}"><h4>ФИО: {{d.name}}</h4></a>
+                <p>телефон: {{d.phone}}</p>
+                <p>должность: {{d.position}}</p>
+                <p>Адрес офиса: {{d.address}}</p>
+                {% if d.position == 'менеджер' %}
+                <p>Количество сделок: {{d.quantityOfDeals}}</p>
+                 {% endif %}
+                 {%if request.user.is_authenticated and request.user.is_staff %}
+                <a href="{% url 'employers_update' d.id %}"><button class="btn btn-outline-secondary" id="incardbutton">Обновить</button></a>
+                <a href="{% url 'employers_delete' d.id %}"><button class="btn btn-outline-secondary" id="incardbutton">Удалить</button></a>
+                 {% endif %}
+            </div>
+        </div>
+    </div>
+
+</header>
+{% endblock %}

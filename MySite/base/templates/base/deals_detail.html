@@ -1,0 +1,32 @@
+{% extends 'base/layout.html' %} {% block content %}
+<header class="header">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="description text-center" id="infopage">
+
+
+
+            <h3 id="shadowtext">  Страница с информацией о сделках</h3>
+            <div class="card" id="mycard">
+                <h4>Номер договора: {{d.contract}}</h4>
+                <p>Квартира: {{d.apartment}}</p>
+                <p>Менеджер: {{d.employer}}</p>
+                <p>Цена: {{d.price}}₽</p>
+                <p>Контрагент: {{d.counteragent}}</p>
+                <p>Счёт: {{d.invoice}}</p>
+                <p>Статус акта приёма-передачи: {{d.status_of_act}}</p>
+                <p>Дата заключения: {{d.dateOfCon}}</p>
+                <p>Дата регистрации: {{d.dateOfReg}}</p>
+                {%if request.user.is_authenticated and request.user.is_staff %}
+                <a href="{% url 'deals_update' d.id %}"><button class="btn btn-outline-secondary" id="incardbutton">Обновить</button></a>
+                <a href="{% url 'deals_delete' d.id %}"><button class="btn btn-outline-secondary" id="incardbutton">Удалить</button></a>
+                {% endif %}
+            </div>
+
+
+        </div>
+
+    </div>
+
+</header>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base/layout.html' %} {% block content %}
+<header class="header">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="description text-center" id="infopage">
+            <h3>
+                Страница с информацией о персонале</h3>
+                {%if request.user.is_authenticated and request.user.is_staff %}
+                    <a href="{% url 'employers_create' %}"><button class="btn btn-outline-secondary">Добавить</button></a> {% endif %}{% for d in employers %}
+
+            <div class="card" id="mycard">
+                 <a href="{% url 'employers_detail' d.id %}"><h4>ФИО: {{d.name}}</h4></a>
+                <p>телефон: {{d.phone}}</p>
+                <p>должность: {{d.position}}</p>
+                <p>Адрес офиса: {{d.address}}</p>
+                {% if d.position == 'Менеджер' %}
+                <p>Количество сделок: {{d.quantityOfDeals}}</p>
+                {% endif %}
+            </div>
+            {% endfor %}
+                        <h3>Самый продуктивный менеджер:
+                        {% for b in bestman %}
+               {{b.name}}
+               {% endfor %}</h3>
+        </div>
+    </div>
+
+</header>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base/layout.html' %} {% block content %}
+<header class="header">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="description text-center" id="infopage">
+            <h3>
+                Страница с информацией о контрагентах</h3>
+            <a href="{% url 'counteragents_create' %}"><button class="btn btn-outline-secondary">Добавить</button></a> {% for d in counteragents %}
+            <div class="card" id="mycard">
+                <a href="{% url 'counteragents_detail' d.id %}"><h4>ФИО: {{d.name}}</h4></a>
+                <p>телефон: {{d.phone}}</p>
+                <p>паспортные данные: {{d.passport}}</p>
+                <p>Адрес регистрации: {{d.address}}</p>
+                <p>Дата рождения: {{d.date_of_birth}}</p>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+</header>
+{% endblock %}

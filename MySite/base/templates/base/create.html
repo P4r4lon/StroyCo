@@ -1,0 +1,17 @@
+{% extends 'base/layout.html' %} {% block content %}
+<header class="header">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="description" id="infopage">
+            <h3> Страница добавления/обновления</h3>
+
+            <form method="POST" class="client-form">{% csrf_token %} {{ form.as_p }}
+                <button class="btn btn-outline-secondary">Сохранить</button>
+
+            </form>
+
+        </div>
+    </div>
+
+</header>
+{% endblock %}

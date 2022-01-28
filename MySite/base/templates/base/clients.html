@@ -1,0 +1,37 @@
+{% extends 'base/layout.html' %} {% block content %}
+<header class="header">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="description text-center" id="infopage">
+            <h3>
+                Страница с информацией о клиентах</h3>
+            <a href=""><button class="btn btn-outline-secondary">Добавить</button></a>
+            <div class="card" id="mycard">
+                <a href=""><h4>ФИО: Козлова Алина Максимовна</h4></a>
+                <p>телефон: 89123456789</p>
+                <p>менеджер: Лебедев Климент Христофорович</p>
+                <p>email: alkozlova@mail.ru</p>
+                <p>дата: 20.11.2021 12:00</p>
+
+            </div>
+            <div class="card" id="mycard">
+                <a href=""><h4>ФИО: Петров Андрей Павлович</h4></a>
+                <p>телефон: +79177719371</p>
+                <p>менеджер: Крылов Мечислав Алексеевич</p>
+                <p>email: pavlovanp@gmail.com</p>
+                <p>дата: 24.12.2021 14:00</p>
+            </div>
+            <div class="card" id="mycard">
+                <a href=""><h4>ФИО: Буров Кондрат Русланович</h4></a>
+                <p>телефон: 89886645333</p>
+                <p>менеджер: Носов Вальтер Святославович</p>
+                <p>email: burovrus@gmail.com</p>
+                <p>дата: 21.11.2021 11:00</p>
+            </div>
+
+
+        </div>
+    </div>
+
+</header>
+{% endblock %}
